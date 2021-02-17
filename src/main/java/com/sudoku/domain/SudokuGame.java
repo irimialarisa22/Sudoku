@@ -1,6 +1,11 @@
 package com.sudoku.domain;
 
-public class SudokuGame {
+import com.sudoku.states.GameState;
+import com.sudoku.utilities.SudokuUtilities;
+
+import java.io.Serializable;
+
+public class SudokuGame implements Serializable {
     private final GameState gameState;
     private final int[][] gridState;
 
@@ -15,7 +20,8 @@ public class SudokuGame {
         return gameState;
     }
 
-    public int[][] getGridState() {
-        return gridState;
+    // We will work with a copy of the grid state
+    public int[][] getCopyOfGridState() {
+        return SudokuUtilities.copyToNewArray(gridState);
     }
 }
